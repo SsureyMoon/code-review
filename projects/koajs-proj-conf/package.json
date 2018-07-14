@@ -1,0 +1,11 @@
+{
+  "name": "koajs-proj-conf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest"
+  },
+  "author": "",
+  "license": "MIT"
+}
