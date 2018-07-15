@@ -12,3 +12,8 @@ exports.postBook = async (ctx) => {
     await ctx.database.client.saveBook(ctx.sanitizedBody);
     ctx.status = 201;
 };
+
+exports.listBooks = async (ctx) => {
+    ctx.body = await ctx.database.client.listBooks();
+    ctx.status = 200;
+};

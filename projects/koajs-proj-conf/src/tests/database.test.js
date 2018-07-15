@@ -33,4 +33,19 @@ describe('database client', async () => {
         await client.saveBook(testData);
         expect(collection.save).toHaveBeenCalledWith(testData);
     });
+
+    test('listBooks should call db query', async () => {
+        await client.listBooks();
+
+        const dbCalls = db.query.mock.calls;
+
+        expect(dbCalls).toHaveLength(1);
+
+        expect(dbCalls[0][0].bindVars).toEqual({
+            value0: collection,
+        });
+        expect(dbCalls[0][0].query.replace(/\s\s+/g, ' ').trim()).toBe(`
+            FOR r IN @value0
+            RETURN r`.replace(/\s\s+/g, ' ').trim());
+    });
 });

@@ -13,6 +13,7 @@ const router = new Router({
     prefix: `/${config.API_VER}`,
 });
 router.get('/health', controllers.healthcheck);
+router.get('/books', controllers.listBooks);
 router.post('/books', buildValidateMiddleware(bookItemValidators, 'request.body'), controllers.postBook);
 
 module.exports = router;

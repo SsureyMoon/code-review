@@ -38,9 +38,11 @@ describe('books controller', async () => {
             database: {
                 client: {
                     saveBook: jest.fn(),
+                    listBooks: jest.fn(),
                 },
             },
         };
+        ctx.database.client.listBooks.mockImplementation(() => []);
     });
 
     test('should not save doc and return 400 when input is not valid', async () => {
@@ -67,5 +69,15 @@ describe('books controller', async () => {
         await controllers.postBook(ctx, next);
         expect(ctx.database.client.saveBook).toHaveBeenCalledWith(ctx.sanitizedBody);
         expect(ctx.status).toEqual(201);
+    });
+
+    test('should fetch docs based in the coollection and return the result', async () => {
+        ctx.validation = {
+            isValid: true,
+        };
+        await controllers.listBooks(ctx, next);
+        expect(ctx.database.client.listBooks).toHaveBeenCalled();
+        expect(ctx.status).toEqual(200);
+        expect(ctx.body).toEqual([]);
     });
 });
