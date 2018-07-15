@@ -14,6 +14,11 @@ npm start # app 컨테이너내에서 Node.js 앱을 실행시킨다.
 ```
 
 ### 테스트
+```
+docker-compose exec app npm test # 컨테이너 외부
+# 또는
+npm test # app 컨테이너 외부
+```
 
 ## 리뷰 요청
 Node.js 초보입니다. Koa.js를 이용해서 웹 애플리케이션을 만들고 있는데 다음과 같은 부분이 궁급해서 리뷰 요청드립니다:
