@@ -1,0 +1,44 @@
+version: '3.6'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: ["sleep", "infinity"]
+    networks:
+      - my-service
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./package.json:/opt/service/package.json"
+      - "./app.js:/opt/service/app.js"
+      - "./src:/opt/service/src"
+      - ".eslintrc:/opt/service/.eslintrc"
+    environment:
+      - DB_ACCESS_URL=http+tcp://db:8529
+      - DB_NAME=mydb
+      - DB_USERNAME=myuser
+      - DB_PASSWORD=myuserpassword
+    depends_on:
+      - db
+  db:
+    image: arangodb:3.3
+    volumes:
+      - "dbdata:/var/lib/arangodb3"
+      - "./init/db-init.sh:/docker-entrypoint-initdb.d/db-init.sh"
+    environment:
+      - ARANGO_SERVER_ENDPOINT=unix:///tmp/arangodb-tmp.sock
+      - ARANGO_ROOT_PASSWORD=myrootpassword
+      - DB_NAME=mydb
+      - DB_USERNAME=myuser
+      - DB_PASSWORD=myuserpassword
+    networks:
+      - my-service
+    ports:
+      - "8529:8529"
+
+networks:
+  my-service:
+
+volumes:
+  dbdata:
