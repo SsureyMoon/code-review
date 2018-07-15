@@ -17,7 +17,14 @@ npm start # app 컨테이너내에서 Node.js 앱을 실행시킨다.
 ```
 docker-compose exec app npm test # 컨테이너 외부
 # 또는
-npm test # app 컨테이너 외부
+npm test # app 컨테이너 내부
+```
+
+### 린트 코드
+```
+docker-compose exec app npm run lint # 컨테이너 외부
+# 또는
+npm run lint # app 컨테이너 내부
 ```
 
 ## 리뷰 요청

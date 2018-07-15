@@ -1,15 +1,15 @@
 const buildFieldSerialzier = (idField) => {
     return {
         convert: (obj, key) => ({ [idField]: obj[key] }),
-    }
-}
+    };
+};
 
 const fieldSerializer = {
     convert: (obj, key) => ({ [key]: obj[key] }),
 };
 
 const bookSerializers = {
-    _key: buildFieldSerialzier("id"),
+    _key: buildFieldSerialzier('id'),
     name: fieldSerializer,
     isbn: fieldSerializer,
     publishedAt: fieldSerializer,

@@ -7,26 +7,24 @@ const resolve = (obj, property) => {
     }, obj);
 };
 
-exports.setContext = contextObj =>
-    async (ctx, next) => {
-        Object.keys(contextObj).forEach((key) => {
-            ctx[key] = contextObj[key];
-        });
-        await next();
-    };
+exports.setContext = contextObj => async (ctx, next) => {
+    Object.keys(contextObj).forEach((key) => {
+        ctx[key] = contextObj[key];
+    });
+    await next();
+};
 
-exports.buildValidateMiddleware = (validator, fieldToValidate) =>
-    async (ctx, next) => {
-        // validate body
-        const body = { ...resolve(ctx, fieldToValidate) };
-        ctx.validation = validators.validate(validator, body);
+exports.buildValidateMiddleware = (validator, fieldToValidate) => async (ctx, next) => {
+    // validate body
+    const body = { ...resolve(ctx, fieldToValidate) };
+    ctx.validation = validators.validate(validator, body);
 
-        // sanitize body
-        if (ctx.validation.isValid) {
-            ctx.sanitizedBody = validators.sanitize(validator, body);
-        } else {
-            ctx.sanitizedBody = {};
-        }
+    // sanitize body
+    if (ctx.validation.isValid) {
+        ctx.sanitizedBody = validators.sanitize(validator, body);
+    } else {
+        ctx.sanitizedBody = {};
+    }
 
-        await next();
-    };
+    await next();
+};

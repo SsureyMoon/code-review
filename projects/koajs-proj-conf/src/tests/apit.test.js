@@ -83,7 +83,6 @@ describe('book list endpoint', async () => {
     });
 
     test('should return book list', async () => {
-
         const response = await request(app.callback())
             .get(`/${API_VER}/books`);
         expect(response.status).toEqual(200);

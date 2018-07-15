@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "lint": "npx eslint ./app.js ./server.js ./src",
+    "start": "npx nodemon ./server.js",
     "test": "NODE_ENV=test jest"
   },
   "author": "",
@@ -18,7 +20,14 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
     "jest": "^23.4.1",
+    "nodemon": "^1.18.2",
     "supertest": "^3.1.0"
   }
 }

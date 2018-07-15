@@ -69,7 +69,7 @@ describe('ValidateMiddleware for book item', async () => {
                     _key: '9999', // try overriding a key
                     name: '전문가를 위한 파이썬',
                     isbn: '9788968484988',
-                    publishedAt: '2016-08-12'
+                    publishedAt: '2016-08-12',
                 },
             },
         };
@@ -79,7 +79,7 @@ describe('ValidateMiddleware for book item', async () => {
         expect(ctx.sanitizedBody).toEqual({
             name: '전문가를 위한 파이썬',
             isbn: '9788968484988',
-            publishedAt: '2016-08-12'
+            publishedAt: '2016-08-12',
         });
     });
 });
