@@ -7,6 +7,20 @@ const resolve = (obj, property) => {
     }, obj);
 };
 
+exports.handleExceptions = async (ctx, next) => {
+    try {
+        await next();
+    } catch (err) {
+        ctx.status = err.status || 500;
+        ctx.body = err.message;
+
+        if (ctx.status >= 500) {
+            ctx.body = 'Internal server error';
+            ctx.app.emit('error', err, ctx);
+        }
+    }
+};
+
 exports.setContext = contextObj => async (ctx, next) => {
     Object.keys(contextObj).forEach((key) => {
         ctx[key] = contextObj[key];

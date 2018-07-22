@@ -4,3 +4,4 @@
 .envrc
 
 node_modules/
+*.log
