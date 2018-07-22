@@ -36,6 +36,17 @@ services:
       - my-service
     ports:
       - "8529:8529"
+  nginx:
+    image: nginx
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+    volumes:
+      - ./nginx/site.template:/etc/nginx/conf.d/site.template
+    environment:
+      - UPSTREAM_HOST=app:8000
+    networks:
+      - my-service
+    ports:
+      - "8080:80"
 
 networks:
   my-service:

@@ -12,6 +12,9 @@ docker-compose exec app bash # app 컨테이너로 들어간다
 
 npm start # app 컨테이너내에서 Node.js 앱을 실행시킨다.
 ```
+개발 서버:
+- http://127.0.0.1:8080 (Nginx 통과)
+- http://127.0.0.1:8000 (Node.js 직접 연결)
 
 ### 테스트
 ```
