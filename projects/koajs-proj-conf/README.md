@@ -10,7 +10,7 @@ docker-compose up -d # app 컨테이너와 db 컨테이너를 올립니다.
 
 docker-compose exec app bash # app 컨테이너로 들어간다
 
-npm start # app 컨테이너내에서 Node.js 앱을 실행시킨다.
+npm run dev # app 컨테이너내에서 Node.js 앱을 실행시킨다.
 ```
 개발 서버:
 - http://127.0.0.1:8080 (Nginx 통과)
@@ -38,8 +38,9 @@ Node.js 초보입니다. Koa.js를 이용해서 웹 애플리케이션을 만들
 .
 ├── Dockerfile
 ├── README.md
-├── app.js
 ├── docker-compose.yml
+├── bin
+│   └── www
 ├── init
 │   └── db-init.sh
 ├── node_modules
@@ -48,6 +49,7 @@ Node.js 초보입니다. Koa.js를 이용해서 웹 애플리케이션을 만들
 ├── package.json
 ├── server.js
 └── src
+    ├── app.js
     ├── db
     │   ├── client.js
     │   ├── client.test.js

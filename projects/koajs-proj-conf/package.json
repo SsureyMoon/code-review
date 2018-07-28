@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "lint": "npx eslint ./app.js ./server.js ./src",
-    "start": "npx nodemon ./server.js",
+    "lint": "npx eslint bin/www ./src",
+    "dev": "NODE_ENV=develop npx nodemon ./bin/www",
+    "start": "NODE_ENV=production ./bin/www",
     "test": "NODE_ENV=test jest --env=node"
   },
   "author": "",

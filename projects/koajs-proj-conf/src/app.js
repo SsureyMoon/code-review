@@ -3,10 +3,10 @@ const logger = require('koa-logger');
 const bodyParser = require('koa-bodyparser');
 const winston = require('winston');
 
-const db = require('./src/db');
-const { environment } = require('./src/config');
-const middlewares = require('./src/middlewares');
-const routes = require('./src/routes');
+const db = require('./db');
+const { environment } = require('./config');
+const middlewares = require('./middlewares');
+const routes = require('./routes');
 
 const app = new Koa();
 

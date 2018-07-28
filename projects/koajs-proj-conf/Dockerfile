@@ -14,11 +14,11 @@ RUN apt-get update && \
 WORKDIR /opt/service
 
 ADD package.json ./
-ADD app.js ./
-ADD server.js ./
+ADD bin ./bin
 ADD src ./src
 ADD init ./init
 
+RUN chmod a+x ./bin/*
 RUN npm install
 
-CMD node ./server.js
+CMD npm start
