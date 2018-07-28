@@ -4,7 +4,6 @@ const http = require('http');
 
 const app = require('../src/app');
 
-
 const server = http.createServer(app.callback());
 server.listen(8000);
 server.on('listening', () => {
