@@ -1,4 +1,4 @@
-const { DatabaseClient } = require('../db/client');
+const { DatabaseClient } = require('./client');
 
 describe('database client', async () => {
     let db;

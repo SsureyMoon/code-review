@@ -1,7 +1,7 @@
 const request = require('supertest');
-const app = require('../../app');
-const db = require('../db');
-const { API_VER } = require('../config');
+const app = require('../app');
+const db = require('./db');
+const { API_VER } = require('./config');
 
 describe('healthcheck endpoint', async () => {
     test('should return 200 OK', async () => {

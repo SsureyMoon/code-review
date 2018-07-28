@@ -1,8 +1,8 @@
-const validators = require('../validators');
+const validators = require('./validators');
 const {
     buildValidateMiddleware,
     handleExceptions,
-} = require('../middlewares');
+} = require('./middlewares');
 
 describe('ValidateMiddleware for book item', async () => {
     const next = jest.fn();

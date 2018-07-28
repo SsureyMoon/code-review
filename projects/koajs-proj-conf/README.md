@@ -50,18 +50,17 @@ Node.js 초보입니다. Koa.js를 이용해서 웹 애플리케이션을 만들
 └── src
     ├── db
     │   ├── client.js
+    │   ├── client.test.js
     │   └── index.js
+    ├── api.test.js
     ├── config.js
     ├── controllers.js
+    ├── controllers.test.js
     ├── middlewares.js
+    ├── middlewares.test.js
     ├── routes.js
     ├── serializers.js
-    ├── validators.js
-    └── tests
-        ├── apit.test.js
-        ├── controllers.test.js
-        ├── database.test.js
-        └── middlewares.test.js
+    └── validators.js
 ```
 - 전체적인 프로젝트 구조가 맞는지 알고 싶습니다. (너무 범위가 넗다면 config 쪽과 db client 를 만들어 사용하는 부분, 미들웨어를 만드는 부분에 대해서만이라고 알려주시면 감사드리겠습니다.)
 - ./app.js 에서 database client를 ctx에 세팅해서 컨트롤러에서 사용하고 있습니다.(./app.js#L18) 이런 방법이 올바른 사용 방법인지 알고 싶습니다.
