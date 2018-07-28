@@ -1,6 +1,6 @@
 const arangojs = require('arangojs');
 
-const dbConfig = require('../config').database;
+const { database: dbConfig } = require('../config');
 const {
     DatabaseClient,
 } = require('./client');
@@ -17,13 +17,17 @@ const db = new arangojs.Database({
 
 // create the collection if not exist
 const collection = db.collection(dbConfig.dbCollection);
-collection.get().then(null, () => {
-    collection.create().then(() => {
-        console.log('collection was created'); // eslint-disable-line
-    }, () => {
-        console.log('collection access failed'); // eslint-disable-line
+collection.get()
+    .then(() => {
+        console.log('collection exists'); // eslint-disable-line
+    })
+    .catch(() => {
+        console.log('collection will be created'); // eslint-disable-line
+        return collection.create();
+    })
+    .catch(() => {
+        throw new Error('DB connection failed');
     });
-});
 
 module.exports = {
     db,
