@@ -1,6 +1,6 @@
 const controllers = require('./controllers');
 
-describe('healthcheck controller', async () => {
+describe('healthcheck controller', () => {
     const next = jest.fn();
     let ctx;
 

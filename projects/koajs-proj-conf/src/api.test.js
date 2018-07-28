@@ -3,7 +3,7 @@ const app = require('./app');
 const db = require('./db');
 const { API_VER } = require('./config');
 
-describe('healthcheck endpoint', async () => {
+describe('healthcheck endpoint', () => {
     test('should return 200 OK', async () => {
         const response = await request(app.callback()).get(`/${API_VER}/health`);
         expect(response.status).toBe(200);
@@ -11,7 +11,7 @@ describe('healthcheck endpoint', async () => {
     });
 });
 
-describe('books endpoint', async () => {
+describe('books endpoint', () => {
     beforeAll(async () => {
         try {
             await db.collection.create();
@@ -63,7 +63,7 @@ describe('books endpoint', async () => {
     });
 });
 
-describe('book list endpoint', async () => {
+describe('book list endpoint', () => {
     beforeAll(async () => {
         try {
             await db.collection.create();

@@ -1,6 +1,6 @@
 const { DatabaseClient } = require('./client');
 
-describe('database client', async () => {
+describe('database client', () => {
     let db;
     let collection;
     let client;

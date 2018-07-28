@@ -4,7 +4,7 @@ const {
     handleExceptions,
 } = require('./middlewares');
 
-describe('ValidateMiddleware for book item', async () => {
+describe('ValidateMiddleware for book item', () => {
     const next = jest.fn();
     const middleware = buildValidateMiddleware(validators.bookItemValidators, 'request.body');
     let ctx;
@@ -85,7 +85,7 @@ describe('ValidateMiddleware for book item', async () => {
     });
 });
 
-describe('Error handling middleware', async () => {
+describe('Error handling middleware', () => {
     let next;
     let ctx;
 
