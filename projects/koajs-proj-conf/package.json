@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "lint": "npx eslint bin/www ./src",
-    "dev": "NODE_ENV=develop npx nodemon ./bin/www",
+    "lint": "eslint bin/www ./src",
+    "dev": "NODE_ENV=develop nodemon ./bin/www",
     "start": "NODE_ENV=production ./bin/www",
     "test": "NODE_ENV=test jest --env=node"
   },
