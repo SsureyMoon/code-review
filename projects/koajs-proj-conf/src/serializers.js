@@ -1,8 +1,6 @@
-const buildFieldSerialzier = (idField) => {
-    return {
-        convert: (obj, key) => ({ [idField]: obj[key] }),
-    };
-};
+const buildFieldSerialzier = idField => ({
+    convert: (obj, key) => ({ [idField]: obj[key] }),
+});
 
 const fieldSerializer = {
     convert: (obj, key) => ({ [key]: obj[key] }),

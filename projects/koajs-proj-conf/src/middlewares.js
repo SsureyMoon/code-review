@@ -2,9 +2,7 @@ const validators = require('./validators');
 
 const resolve = (obj, property) => {
     const properties = property.split('.');
-    return properties.reduce((prevObj, key) => {
-        return prevObj[key];
-    }, obj);
+    return properties.reduce((prevObj, key) => prevObj[key], obj);
 };
 
 exports.handleExceptions = async (ctx, next) => {
