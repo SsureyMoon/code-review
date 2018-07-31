@@ -7,12 +7,8 @@ const database = {
     dbName: process.env.DB_NAME || 'defaultdb',
     dbUsername: process.env.DB_USERNAME || 'defaultuser',
     dbPassword: process.env.DB_PASSWORD || 'defaultpassword',
-    dbCollection: 'books',
+    dbCollection: process.env.BOOK_COLLECTION || 'books',
 };
-
-if (environment === 'test') {
-    database.dbCollection = 'books_test';
-}
 
 module.exports = {
     API_VER,

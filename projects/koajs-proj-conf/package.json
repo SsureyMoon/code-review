@@ -7,7 +7,7 @@
     "lint": "eslint bin/www ./src",
     "dev": "NODE_ENV=develop nodemon ./bin/www",
     "start": "NODE_ENV=production ./bin/www",
-    "test": "NODE_ENV=test jest --env=node"
+    "test": "NODE_ENV=test BOOK_COLLECTION=books_test jest --env=node"
   },
   "author": "",
   "license": "MIT",
