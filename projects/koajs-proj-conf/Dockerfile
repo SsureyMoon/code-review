@@ -15,6 +15,7 @@ WORKDIR /opt/service
 
 ADD package.json ./
 ADD bin ./bin
+ADD config ./config
 ADD src ./src
 ADD init ./init
 

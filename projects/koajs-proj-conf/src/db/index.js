@@ -1,6 +1,6 @@
 const arangojs = require('arangojs');
 
-const { database: dbConfig } = require('../config');
+const { database: dbConfig } = require('../../config');
 const {
     DatabaseClient,
 } = require('./client');

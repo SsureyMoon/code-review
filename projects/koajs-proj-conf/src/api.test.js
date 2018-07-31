@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('./app');
 const db = require('./db');
-const { API_VER } = require('./config');
+const { API_VER } = require('../config');
 
 describe('healthcheck test', () => {
     test('should return 200 OK for any enpoints if it is from elb healthchecker', async () => {

@@ -4,7 +4,7 @@ const bodyParser = require('koa-bodyparser');
 const winston = require('winston');
 
 const db = require('./db');
-const { environment } = require('./config');
+const { environment } = require('../config');
 const middlewares = require('./middlewares');
 const routes = require('./routes');
 

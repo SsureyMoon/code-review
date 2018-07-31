@@ -13,6 +13,7 @@ services:
       - "./package.json:/opt/service/package.json"
       - "./bin:/opt/service/bin"
       - "./src:/opt/service/src"
+      - "./config:/opt/service/config"
       - ".eslintrc:/opt/service/.eslintrc"
     environment:
       - DB_ACCESS_URL=http+tcp://db:8529

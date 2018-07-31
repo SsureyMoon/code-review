@@ -41,6 +41,8 @@ Node.js 초보입니다. Koa.js를 이용해서 웹 애플리케이션을 만들
 ├── docker-compose.yml
 ├── bin
 │   └── www
+├── config
+│   └── index.js
 ├── init
 │   └── db-init.sh
 ├── node_modules
@@ -55,7 +57,6 @@ Node.js 초보입니다. Koa.js를 이용해서 웹 애플리케이션을 만들
     │   ├── client.test.js
     │   └── index.js
     ├── api.test.js
-    ├── config.js
     ├── controllers.js
     ├── controllers.test.js
     ├── middlewares.js
