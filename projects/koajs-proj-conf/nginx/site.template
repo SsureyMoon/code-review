@@ -3,13 +3,7 @@ upstream backend {
 }
 
 server {
-    location /v1/health {
-        add_header Content-Type text/plain;
-        access_log  off;
-        return 200 'ok';
-    }
-
-    location /v1/books {
+    location /v1 {
         proxy_pass  http://backend;
     }
 }

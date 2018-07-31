@@ -21,6 +21,16 @@ exports.handleExceptions = async (ctx, next) => {
     }
 };
 
+exports.handleHealthCheck = async (ctx, next) => {
+    const userAgent = ctx.request.header['user-agent'];
+    if (userAgent && userAgent.toLowerCase().includes('elb-healthchecker')) {
+        ctx.status = 200;
+        ctx.body = { message: 'ok' };
+        return;
+    }
+    await next();
+};
+
 exports.setContext = contextObj => async (ctx, next) => {
     Object.keys(contextObj).forEach((key) => {
         ctx[key] = contextObj[key];

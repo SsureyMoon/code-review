@@ -1,34 +1,5 @@
 const controllers = require('./controllers');
 
-describe('healthcheck controller', () => {
-    const next = jest.fn();
-    let ctx;
-
-    beforeEach(() => {
-        ctx = {
-            database: {
-                client: {
-                    healthcheck: jest.fn(),
-                },
-            },
-        };
-    });
-
-    test('should check database connection status', async () => {
-        await controllers.healthcheck(ctx, next);
-        expect(ctx.database.client.healthcheck).toHaveBeenCalled();
-        expect(ctx.body).toEqual({ message: 'ok' });
-    });
-
-    test('should throw an exeption when the database connection fails', async () => {
-        ctx.database.client.healthcheck.mockImplementation(() => {
-            throw new Error('DB connection failed');
-        });
-        expect(controllers.healthcheck(ctx, next)).rejects.toThrowError();
-    });
-});
-
-
 describe('books controller', async () => {
     const next = jest.fn();
     let ctx;

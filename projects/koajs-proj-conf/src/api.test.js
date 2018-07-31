@@ -3,11 +3,19 @@ const app = require('./app');
 const db = require('./db');
 const { API_VER } = require('./config');
 
-describe('healthcheck endpoint', () => {
-    test('should return 200 OK', async () => {
-        const response = await request(app.callback()).get(`/${API_VER}/health`);
+describe('healthcheck test', () => {
+    test('should return 200 OK for any enpoints if it is from elb healthchecker', async () => {
+        const response = await request(app.callback())
+            .get(`/${API_VER}/any-pass`)
+            .set('user-agent', 'ELB-HealthChecker/2.0');
         expect(response.status).toBe(200);
         expect(response.body).toEqual({ message: 'ok' });
+    });
+
+    test('should return 404 OK for any enpoints it is not from elb healthchecker', async () => {
+        const response = await request(app.callback())
+            .get(`/${API_VER}/any-pass`);
+        expect(response.status).toBe(404);
     });
 });
 

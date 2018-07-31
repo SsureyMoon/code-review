@@ -25,6 +25,7 @@ if (environment === 'develop') {
 }
 
 app.use(middlewares.handleExceptions);
+app.use(middlewares.handleHealthCheck);
 app.use(bodyParser());
 app.use(middlewares.setContext({
     database: {

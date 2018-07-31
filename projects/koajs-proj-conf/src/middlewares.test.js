@@ -2,6 +2,7 @@ const validators = require('./validators');
 const {
     buildValidateMiddleware,
     handleExceptions,
+    handleHealthCheck,
 } = require('./middlewares');
 
 describe('ValidateMiddleware for book item', () => {
@@ -128,5 +129,41 @@ describe('Error handling middleware', () => {
         await middleware(ctx, next);
         expect(ctx.status).toBe(400);
         expect(ctx.body).toBe('what the client did wrong');
+    });
+});
+
+describe('Health checking middleware', () => {
+    let next;
+    let ctx;
+
+    const middleware = handleHealthCheck;
+
+    beforeEach(() => {
+        next = jest.fn();
+
+        ctx = {
+            request: {
+                header: {},
+            },
+            body: '',
+            status: '',
+            app: {
+                emit: jest.fn(),
+            },
+        };
+    });
+
+    test('should return 200 when the header user-agent contains elb-healthchecker', async () => {
+        ctx.request.header['user-agent'] = 'ELB-HealthChecker/2.0';
+        await middleware(ctx, next);
+        expect(ctx.status).toBe(200);
+        expect(ctx.body).toEqual({ message: 'ok' });
+        expect(next).not.toHaveBeenCalled();
+    });
+
+    test('should call next when the header user-agent does not contain elb-healthchecker', async () => {
+        ctx.request.header['user-agent'] = 'BlahBlah';
+        await middleware(ctx, next);
+        expect(next).toHaveBeenCalled();
     });
 });
