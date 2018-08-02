@@ -21,11 +21,11 @@ collection.get()
     .then(() => {
         console.log('collection exists'); // eslint-disable-line
     })
-    .catch(() => {
-        console.log('collection will be created'); // eslint-disable-line
-        return collection.create();
-    })
-    .catch(() => {
+    .catch((e) => {
+        if (e.isArangoError && e.errorNum === 1203) {
+            console.log('collection will be created'); // eslint-disable-line
+            return collection.create();
+        }
         throw new Error('DB connection failed');
     });
 
