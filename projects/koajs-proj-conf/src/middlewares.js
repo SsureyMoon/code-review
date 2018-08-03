@@ -1,6 +1,6 @@
 const validators = require('./validators');
 
-const resolve = (obj, property) => {
+const extractProperty = (obj, property) => {
     const properties = property.split('.');
     return properties.reduce((prevObj, key) => prevObj[key], obj);
 };
@@ -31,7 +31,7 @@ exports.handleHealthCheck = async (ctx, next) => {
 
 exports.buildValidateMiddleware = (validator, fieldToValidate) => async (ctx, next) => {
     // validate body
-    const body = { ...resolve(ctx, fieldToValidate) };
+    const body = { ...extractProperty(ctx, fieldToValidate) };
     ctx.validation = validators.validate(validator, body);
 
     // sanitize body
