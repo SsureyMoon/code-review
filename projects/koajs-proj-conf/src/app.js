@@ -20,6 +20,8 @@ const errLogger = winston.createLogger({
     ],
 });
 
+app.use(middlewares.handleExceptions);
+
 if (environment === 'develop') {
     app.use(logger());
 } else if (environment === 'production') {
@@ -28,7 +30,6 @@ if (environment === 'develop') {
     });
 }
 
-app.use(middlewares.handleExceptions);
 app.use(middlewares.handleHealthCheck);
 app.use(bodyParser());
 app.use(middlewares.setContext({
