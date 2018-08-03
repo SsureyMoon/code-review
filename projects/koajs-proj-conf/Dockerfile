@@ -22,4 +22,4 @@ ADD init ./init
 RUN chmod a+x ./bin/*
 RUN npm install
 
-CMD npm start
+CMD NODE_ENV=production ./bin/www
