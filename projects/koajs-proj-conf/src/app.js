@@ -32,9 +32,8 @@ if (environment === 'develop') {
 
 app.use(middlewares.handleHealthCheck);
 app.use(bodyParser());
-app.use(middlewares.setContext({
-    db: db.client,
-}));
+
+app.context.db = db.client;
 app.use(routes.routes());
 
 module.exports = app;

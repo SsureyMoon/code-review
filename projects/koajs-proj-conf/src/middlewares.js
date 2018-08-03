@@ -29,13 +29,6 @@ exports.handleHealthCheck = async (ctx, next) => {
     await next();
 };
 
-exports.setContext = contextObj => async (ctx, next) => {
-    Object.keys(contextObj).forEach((key) => {
-        ctx[key] = contextObj[key];
-    });
-    await next();
-};
-
 exports.buildValidateMiddleware = (validator, fieldToValidate) => async (ctx, next) => {
     // validate body
     const body = { ...resolve(ctx, fieldToValidate) };
