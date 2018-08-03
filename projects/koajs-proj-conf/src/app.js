@@ -11,8 +11,12 @@ const routes = require('./routes');
 const app = new Koa();
 
 const errLogger = winston.createLogger({
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.prettyPrint(),
+    ),
     transports: [
-        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.Console({ level: 'error' }),
     ],
 });
 
