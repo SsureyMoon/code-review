@@ -4,11 +4,11 @@ exports.postBook = async (ctx) => {
         ctx.body = { ...ctx.validation.messages };
         return;
     }
-    await ctx.database.client.saveBook(ctx.sanitizedBody);
+    await ctx.db.saveBook(ctx.sanitizedBody);
     ctx.status = 201;
 };
 
 exports.listBooks = async (ctx) => {
-    ctx.body = await ctx.database.client.listBooks();
+    ctx.body = await ctx.db.listBooks();
     ctx.status = 200;
 };

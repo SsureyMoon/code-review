@@ -6,14 +6,12 @@ describe('books controller', async () => {
 
     beforeEach(() => {
         ctx = {
-            database: {
-                client: {
-                    saveBook: jest.fn(),
-                    listBooks: jest.fn(),
-                },
+            db: {
+                saveBook: jest.fn(),
+                listBooks: jest.fn(),
             },
         };
-        ctx.database.client.listBooks.mockImplementation(() => []);
+        ctx.db.listBooks.mockImplementation(() => []);
     });
 
     test('should not save doc and return 400 when input is not valid', async () => {
@@ -24,7 +22,7 @@ describe('books controller', async () => {
             },
         };
         await controllers.postBook(ctx, next);
-        expect(ctx.database.client.saveBook).not.toHaveBeenCalled();
+        expect(ctx.db.saveBook).not.toHaveBeenCalled();
         expect(ctx.status).toEqual(400);
         expect(ctx.body).toEqual(ctx.validation.messages);
     });
@@ -38,7 +36,7 @@ describe('books controller', async () => {
             isbn: '9788966264049',
         };
         await controllers.postBook(ctx, next);
-        expect(ctx.database.client.saveBook).toHaveBeenCalledWith(ctx.sanitizedBody);
+        expect(ctx.db.saveBook).toHaveBeenCalledWith(ctx.sanitizedBody);
         expect(ctx.status).toEqual(201);
     });
 
@@ -47,7 +45,7 @@ describe('books controller', async () => {
             isValid: true,
         };
         await controllers.listBooks(ctx, next);
-        expect(ctx.database.client.listBooks).toHaveBeenCalled();
+        expect(ctx.db.listBooks).toHaveBeenCalled();
         expect(ctx.status).toEqual(200);
         expect(ctx.body).toEqual([]);
     });
